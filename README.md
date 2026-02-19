@@ -1,6 +1,6 @@
 # Finnish Job Market Scraper & Analyzer
 
-A Python tool that scrapes live job listings from [Duunitori.fi](https://duunitori.fi), stores them in a SQLite database, and visualizes market trends through an interactive dashboard.
+A Python tool that scrapes live job listings from [Duunitori.fi](https://duunitori.fi), stores them in a SQLite database, and generates a single-page interactive HTML report with charts and stats.
 
 Built as a portfolio project demonstrating web scraping, data pipelines, database management, and data visualization.
 
@@ -8,21 +8,21 @@ Built as a portfolio project demonstrating web scraping, data pipelines, databas
 
 ## What It Does
 
-Most job market tools are static. This one pulls real, current data directly from Finland's largest job board, stores every scrape run with a timestamp, and lets you explore the results visually.
+Enter any job title or field and the tool scrapes live listings from Finland's largest job board, stores the results in a SQLite database with timestamps, and generates a single-page interactive HTML report with all charts and stats.
 
-You can compare demand across multiple roles at once — for example, how many Python jobs are available versus developer, data analyst, or cybersecurity roles — and see which companies and cities are hiring the most.
+It works for any profession — teacher, nurse, marketing manager, software developer — not just tech roles.
 
 ---
 
 ## Features
 
+- Accepts any search term at runtime — works for any job or field
 - Scrapes live job listings (title, company, location) using browser automation
 - Handles JavaScript-rendered pages that basic scrapers cannot access
-- Runs multiple search terms in one pass and tags each result
-- Stores all scraped data in a SQLite database with timestamps for historical tracking
+- Stores all scraped data in a SQLite database with timestamps
 - Exports to CSV for quick access
-- Analyzes trends: role types, top companies, geographic distribution
-- Generates interactive browser-based charts with Plotly
+- Generates a single-page interactive HTML report with all charts
+- Report can be shared with anyone — no Python required to view it
 
 ---
 
@@ -48,7 +48,7 @@ job-scraper/
 ├── analysis/
 │   └── analyze.py          # Pandas data analysis
 ├── dashboard/
-│   └── dashboard.py        # Interactive Plotly dashboard
+│   └── dashboard.py        # Single-page HTML dashboard
 ├── database/
 │   └── db.py               # SQLite database handler
 ├── data/
@@ -86,26 +86,27 @@ playwright install chromium
 ### Usage
 
 ```bash
-# Step 1 - Scrape jobs from Duunitori.fi
+# Step 1 - Run the scraper (you will be prompted to enter a search term)
 python scraper/scrape.py
 
-# Step 2 - Run analysis
+# Step 2 - Optional: print analysis summary in terminal
 python analysis/analyze.py
 
-# Step 3 - Open interactive dashboard in browser
+# Step 3 - Generate and open the dashboard
 python dashboard/dashboard.py
 ```
+
+The dashboard saves as an HTML file in the `data/` folder and opens automatically in your browser. It can be shared with anyone — no Python required to view it.
 
 ---
 
 ## Sample Results
 
-Scraping across four search terms (python, developer, data analyst, cybersecurity) returns around 70-100 unique listings per run. Key findings from the Finnish market:
+Searching for "python" returns around 25-50 live listings. Key findings from the Finnish market:
 
 - Helsinki and Espoo account for the majority of tech listings
 - Engineer and Analyst are the most common role types
 - LähiTapiola, Fortum, and Tampereen yliopisto are among the most active hirers
-- Developer roles have the highest overall listing count
 
 ---
 
@@ -119,6 +120,4 @@ Scraping across four search terms (python, developer, data analyst, cybersecurit
 
 ## Author
 
-Ghaith Kelil — [GitHub](https://github.com/GhaithKelil)git add README.md
-git commit -m "Update README"
-git push
+Ghaith Kelil — [GitHub](https://github.com/GhaithKelil)
