@@ -1,28 +1,75 @@
-title,company,location
-"Järjestelmäasiantuntija, tietovarasto ja raportointi",Elenia Oy,Tampere
-AI Data Engineer,Tampereen yliopisto,Tampere
-Investment Analyst,Fortum,Espoo
-Data Architect,Enerim Oy,Oulu ja 1 muu
-Back-Office Specialist (kesätyö),Power-Deriva Oy,Helsinki
-"Analyytikko, osake- ja korkosijoitukset",Finlandia Rahastoyhtiö Oy,Helsinki
-Senior Test Automation Specialist,Fennoa,Helsinki ja 10 muuta
-"Testiautomaatiokehittäjä Laadunvarmistukseen, LähiTapiola Kehitys ja uudistuminen",LähiTapiola,Finland
-Matemaatikko Vastuuvelka- ja vakavaraisuuslaskenta -tiimiin,LähiTapiola,Espoo
-Vastuullinen vakuutusmatemaatikko Vastuulliset aktuaarit -tiimiin,LähiTapiola,Espoo
-"Ohjelmistokehityksen, data-analytiikan ja tekoälyn tulevia asiantuntijoita | 15 paikkaa",Saranen Consulting Oy,Turku ja 2 muuta
-Data-analyytikko (Data Analyst),Maatalousyrittäjien eläkelaitos,Espoo ja 1 muu
-"Kesätyöntekijä, Data Core",Bayer Oy,Turku
-BI-analyytikko,WS Finance Oy,Lahti
-AI Engineer - Robotics AD & Optimization,Advanced Micro Devices,Finland ja 5 muuta
-Doctoral Researcher in Interactive Multiobjective Optimization for Sustainable Industrial Energy Systems,Jyväskylän yliopisto,Jyväskylä
-"Tietojärjestelmäsuunnittelija, Tekoälyinfrastruktuuri",Oulun yliopisto,Oulu
-Data Scientist,Enersense,Pori ja 2 muuta
-Cloud & Datacenter Network Engineer,DNA,Helsinki
-Electronics Designer Trainee,Vaisala Oyj,Helsinki
-"Haussa myyjiä Helsinkiin, Tampereelle ja Turkuun",Sector Alarm,Helsinki ja 2 muuta
-Liikkuva asiakashankkija,Aito Talotekniikka Oy,Uusimaa ja 6 muuta
-Hitsaajia kunnossapitoon Pieksämäelle,VR Fleetcare / Eezy Oyj,Mikkeli ja 3 muuta
-Hitsaajia,Anstar Oy,Lahti
-Myyntineuvottelijoita kesätöihin,Sanoma Media Finland Oy,Vantaa ja 1 muu
-"Turvallisuusalan kesätyöpaikat, pääkaupunkiseutu",Palmia Oy,Helsinki ja 2 muuta
-Kotihoidon yrittäjäksi Alinaan,Alina Hoivatiimi Oy,Helsinki ja 42 muuta
+title,company,location,search_term
+"Järjestelmäasiantuntija, tietovarasto ja raportointi",Elenia Oy,Tampere,python
+AI Data Engineer,Tampereen yliopisto,Tampere,python
+Investment Analyst,Fortum,Espoo,python
+Data Architect,Enerim Oy,Oulu ja 1 muu,python
+Back-Office Specialist (kesätyö),Power-Deriva Oy,Helsinki,python
+"Analyytikko, osake- ja korkosijoitukset",Finlandia Rahastoyhtiö Oy,Helsinki,python
+Senior Test Automation Specialist,Fennoa,Helsinki ja 10 muuta,python
+Matemaatikko Vastuuvelka- ja vakavaraisuuslaskenta -tiimiin,LähiTapiola,Espoo,python
+"Testiautomaatiokehittäjä Laadunvarmistukseen, LähiTapiola Kehitys ja uudistuminen",LähiTapiola,Finland,python
+Vastuullinen vakuutusmatemaatikko Vastuulliset aktuaarit -tiimiin,LähiTapiola,Espoo,python
+"Ohjelmistokehityksen, data-analytiikan ja tekoälyn tulevia asiantuntijoita | 15 paikkaa",Saranen Consulting Oy,Turku ja 2 muuta,python
+Data-analyytikko (Data Analyst),Maatalousyrittäjien eläkelaitos,Espoo ja 1 muu,python
+"Kesätyöntekijä, Data Core",Bayer Oy,Turku,python
+BI-analyytikko,WS Finance Oy,Lahti,python
+AI Engineer - Robotics AD & Optimization,Advanced Micro Devices,Finland ja 5 muuta,python
+Doctoral Researcher in Interactive Multiobjective Optimization for Sustainable Industrial Energy Systems,Jyväskylän yliopisto,Jyväskylä,python
+"Tietojärjestelmäsuunnittelija, Tekoälyinfrastruktuuri",Oulun yliopisto,Oulu,python
+Data Scientist,Enersense,Pori ja 2 muuta,python
+Cloud & Datacenter Network Engineer,DNA,Helsinki,python
+Electronics Designer Trainee,Vaisala Oyj,Helsinki,python
+"Haussa myyjiä Helsinkiin, Tampereelle ja Turkuun",Sector Alarm,Helsinki ja 2 muuta,python
+Liikkuva asiakashankkija,Aito Talotekniikka Oy,Uusimaa ja 6 muuta,python
+Hitsaajia kunnossapitoon Pieksämäelle,VR Fleetcare / Eezy Oyj,Mikkeli ja 3 muuta,python
+Hitsaajia,Anstar Oy,Lahti,python
+Myyntineuvottelijoita kesätöihin,Sanoma Media Finland Oy,Vantaa ja 1 muu,python
+"Turvallisuusalan kesätyöpaikat, pääkaupunkiseutu",Palmia Oy,Helsinki ja 2 muuta,python
+Kotihoidon yrittäjäksi Alinaan,Alina Hoivatiimi Oy,Helsinki ja 42 muuta,python
+Senior Software Developer,Kultakiertue Oy,Helsinki,developer
+"Business Developer, Digital Services",Elomatic Oy,Espoo ja 4 muuta,developer
+Ohjelmistokehittäjä/ Software Developer,Jamix Oy,Jyväskylä,developer
+Senior Full-stack Developer,Fennoa,Helsinki ja 10 muuta,developer
+Senior Java Developer (Guidewire),CGI: Senior Java Developer (Guidewire) / aTalent,Finland,developer
+Senior Fullstack Developer,Poolia IT,Uusimaa,developer
+Azure Cloud Developer,Accenture,Helsinki,developer
+Junior RPA Developer,Bolt.Works,Tampere,developer
+Guidewire BillingCenter Configuration Developer,Accenture,Helsinki,developer
+"Summer Trainee, VR Training Developer",Konecranes Finland Oy,Espoo ja 1 muu,developer
+Senior Developer,Terveystalo,Helsinki ja 3 muuta,developer
+Business Intelligence Developer,Insta Group,Tampere ja 1 muu,developer
+Junior Fullstack Developer,Diktamen / aTalent,Helsinki,developer
+Developer – Windows työpöytäsovellukset,Tribedo Oy,Helsinki,developer
+Lead Fullstack Developer,Nokikaveri / aTalent,Pirkkala,developer
+SW test automation developer,Adecco,Jyväskylä,developer
+"Software Developer (Tampere, Helsinki)",Elisa Oyj,Helsinki,developer
+﻿Senior Embedded Developer,Insta Group,Tampere,developer
+Embedded Software Developer,Wire Henkilöstöpalvelut,Oulu,developer
+Backend Developer,iconicchain Oy,Helsinki,developer
+Data Analyst,Kotipizza Group Oyj,Helsinki,data analyst
+Data Analyst,Kultakiertue Oy,Helsinki,data analyst
+Pricing Analyst,Yliopiston Apteekki,Helsinki,data analyst
+Data Analyst,Sanoma Pro,Helsinki,data analyst
+Data analyst,Sydänsairaala,Tampere,data analyst
+Data Analyst Intern,Rovio Entertainment,Helsinki,data analyst
+Data Analyst,Sanoma Learning,Helsinki,data analyst
+Data Analyst (R & SQL) for the banking sector in Helsinki,Academic Work,Helsinki,data analyst
+"Research Manager, Data Analyst & Small Business Coach","Medialähetys Sanansaattajat ry, Mediamission Budbärarna rf",Finland,data analyst
+Data-analyytikko,Inex Partners Oy,Sipoo,data analyst
+"Data analyst, Asiakkuuksien liiketoiminta-analytiikka, Pohjola Vakuutus, Helsinki",OP Pohjola,Helsinki,data analyst
+Datainsinööri (Data Engineer) & Data-Analyytikko (Data Analyst),Vivicta Oy,Espoo,data analyst
+"1–2 harjoittelijaa, oppimiseen liittyvän tutkimustiedon tilastollinen analysointi",Turun yliopisto,Turku,data analyst
+Data-analyytikko tai nuorempi data-analyytikko,Ramboll CM,Espoo,data analyst
+Data-analyytikko,SUOMEN OSUUSKAUPPOJEN KESKUSKUNTA,Helsinki,data analyst
+Vanhempi dataekonomisti analyysipalvelujen kehittämiseen,Suomen Pankki,Helsinki,data analyst
+IT-/System Analyst - Tieto Tech Consulting (m/f/d),Tietoevry,Espoo,data analyst
+"Solution Analyst, Viranomaisraportointi",OP Pohjola,Helsinki,data analyst
+IT/system Analyst - Tieto Tech Consulting (m/f/d),Tietoevry,Oulu,data analyst
+Cybersecurity Senior Consultant / Manager,Deloitte Oy,Helsinki,cybersecurity
+Cybersecurity Business Group Role,Accenture,Helsinki,cybersecurity
+"Summer Trainee, Enterprise Cybersecurity",Konecranes Finland Oy,Hyvinkää ja 1 muu,cybersecurity
+"Doctoral Researcher, Machine Learning and Cybersecurity",Oulun yliopisto,Oulu,cybersecurity
+Accenture Cybersecurity etsii joukkoonsa kyberturvaopiskelijoita kesäksi 2026,Accenture,Helsinki,cybersecurity
+"FPGA Developer — Embedded Systems & Cybersecurity, Tampere / Oulu",Academic Work,Tampere,cybersecurity
+"Senior Azure Security Engineer, CyberSecurity (Helsinki/Oulu)",OP Pohjola,Helsinki,cybersecurity
+"Senior Azure Security Advisor, CyberSecurity (Helsinki/Oulu)",OP Pohjola,Helsinki,cybersecurity
