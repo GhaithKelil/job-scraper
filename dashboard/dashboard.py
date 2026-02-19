@@ -1,64 +1,89 @@
 import pandas as pd
-import plotly.express as px
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+import os
 
 df = pd.read_csv("data/jobs.csv")
+search_term = df["search_term"].iloc[0]
+total_jobs = len(df)
 
-# --- Chart 1: Jobs by search term comparison ---
-term_counts = df["search_term"].value_counts().reset_index()
-term_counts.columns = ["Search Term", "Job Count"]
-
-fig1 = px.bar(term_counts, x="Search Term", y="Job Count",
-              title="Job Market Demand by Tech/Role in Finland",
-              color="Search Term",
-              text="Job Count")
-fig1.update_traces(textposition="outside")
-fig1.update_layout(height=500, showlegend=False)
-fig1.show()
-
-# --- Chart 2: Job Title Keywords Breakdown ---
-keywords = ["Engineer", "Developer", "Manager", "Designer",
-            "Officer", "Executive", "Analyst", "Architect"]
-
-keyword_counts = {}
-for keyword in keywords:
-    keyword_counts[keyword] = df["title"].str.contains(keyword, case=False).sum()
-
-kw_df = pd.DataFrame(list(keyword_counts.items()), columns=["Keyword", "Count"])
-kw_df = kw_df[kw_df["Count"] > 0].sort_values("Count", ascending=False)
-
-fig2 = px.bar(kw_df, x="Keyword", y="Count",
-              title="Most In-Demand Job Types in Finland",
-              color="Count", color_continuous_scale="Blues",
-              text="Count")
-fig2.update_traces(textposition="outside")
-fig2.update_layout(height=500, showlegend=False)
-fig2.show()
-
-# --- Chart 3: Top Companies ---
+# --- Prep data ---
+# Top companies
 top_companies = df["company"].value_counts().head(10).reset_index()
-top_companies.columns = ["Company", "Listings"]
+top_companies.columns = ["Company", "Count"]
 
-fig3 = px.bar(top_companies, x="Listings", y="Company",
-              orientation="h",
-              title="Top Companies Hiring in Finland",
-              color="Listings", color_continuous_scale="Greens",
-              text="Listings")
-fig3.update_traces(textposition="outside")
-fig3.update_layout(height=600, yaxis=dict(autorange="reversed"), showlegend=False)
-fig3.show()
-
-# --- Chart 4: Top Locations ---
+# Top cities
 df["city"] = df["location"].str.split(" ja ").str[0].str.strip()
 top_cities = df["city"].value_counts().head(10).reset_index()
 top_cities.columns = ["City", "Count"]
 
-fig4 = px.bar(top_cities, x="Count", y="City",
-              orientation="h",
-              title="Top Cities for Tech Jobs in Finland",
-              color="Count", color_continuous_scale="Oranges",
-              text="Count")
-fig4.update_traces(textposition="outside")
-fig4.update_layout(height=500, yaxis=dict(autorange="reversed"), showlegend=False)
-fig4.show()
+# Keywords
+keywords = ["Engineer", "Developer", "Manager", "Designer",
+            "Analyst", "Architect", "Consultant", "Specialist"]
+kw_counts = {k: df["title"].str.contains(k, case=False).sum() for k in keywords}
+kw_df = pd.DataFrame(list(kw_counts.items()), columns=["Keyword", "Count"])
+kw_df = kw_df[kw_df["Count"] > 0].sort_values("Count", ascending=False)
 
-print("Dashboard opened in browser!")
+# --- Build dashboard ---
+fig = make_subplots(
+    rows=2, cols=2,
+    subplot_titles=(
+        "Most Common Role Types",
+        "Top 10 Companies Hiring",
+        "Top 10 Cities",
+        ""
+    ),
+    vertical_spacing=0.15,
+    horizontal_spacing=0.1
+)
+
+# Chart 1: Keywords
+fig.add_trace(go.Bar(
+    x=kw_df["Keyword"], y=kw_df["Count"],
+    marker_color="#4C9BE8",
+    text=kw_df["Count"], textposition="outside",
+    name="Role Types"
+), row=1, col=1)
+
+# Chart 2: Companies
+fig.add_trace(go.Bar(
+    x=top_companies["Count"], y=top_companies["Company"],
+    orientation="h",
+    marker_color="#57B894",
+    text=top_companies["Count"], textposition="outside",
+    name="Companies"
+), row=1, col=2)
+
+# Chart 3: Cities
+fig.add_trace(go.Bar(
+    x=top_cities["Count"], y=top_cities["City"],
+    orientation="h",
+    marker_color="#F4A261",
+    text=top_cities["Count"], textposition="outside",
+    name="Cities"
+), row=2, col=1)
+
+# Layout
+fig.update_layout(
+    title=dict(
+        text=f'Job Market Report: "{search_term}" — {total_jobs} listings found',
+        font=dict(size=22)
+    ),
+    height=900,
+    showlegend=False,
+    template="plotly_dark",
+    paper_bgcolor="#1e1e1e",
+    plot_bgcolor="#1e1e1e",
+)
+
+fig.update_yaxes(autorange="reversed", row=1, col=2)
+fig.update_yaxes(autorange="reversed", row=2, col=1)
+
+# Save and open
+os.makedirs("data", exist_ok=True)
+output_path = f"data/report_{search_term.replace(' ', '_')}.html"
+fig.write_html(output_path)
+
+import webbrowser
+webbrowser.open(os.path.abspath(output_path))
+print(f"Report saved to: {output_path}")

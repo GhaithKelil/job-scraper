@@ -1,32 +1,22 @@
 import pandas as pd
 
-def analyze_jobs():
-    df = pd.read_csv("data/jobs.csv")
+df = pd.read_csv("data/jobs.csv")
+search_term = df["search_term"].iloc[0]
 
-    print("=== JOB MARKET ANALYSIS ===\n")
+print(f"\n=== JOB MARKET ANALYSIS: {search_term.upper()} ===")
+print(f"Total jobs found: {len(df)}")
 
-    print(f"Total jobs scraped: {len(df)}\n")
+print("\n--- Top 10 Companies ---")
+print(df["company"].value_counts().head(10))
 
-    print("--- Top 10 Most Common Job Titles ---")
-    print(df["title"].value_counts().head(10))
-    print()
+print("\n--- Top 10 Locations ---")
+df["city"] = df["location"].str.split(" ja ").str[0].str.strip()
+print(df["city"].value_counts().head(10))
 
-    print("--- Top 10 Companies With Most Listings ---")
-    print(df["company"].value_counts().head(10))
-    print()
-
-    print("--- Top 10 Most Common Locations ---")
-    print(df["location"].value_counts().head(10))
-    print()
-
-    # Extract keywords from job titles
-    keywords = ["Engineer", "Developer", "Manager", "Designer", 
-                "Analyst", "Consultant", "Director", "Officer"]
-    
-    print("--- Job Title Keywords Breakdown ---")
-    for keyword in keywords:
-        count = df["title"].str.contains(keyword, case=False).sum()
-        print(f"  {keyword}: {count} jobs")
-
-if __name__ == "__main__":
-    analyze_jobs()
+print("\n--- Job Title Keywords ---")
+keywords = ["Engineer", "Developer", "Manager", "Designer",
+            "Analyst", "Architect", "Consultant", "Specialist"]
+for kw in keywords:
+    count = df["title"].str.contains(kw, case=False).sum()
+    if count > 0:
+        print(f"  {kw}: {count} jobs")
