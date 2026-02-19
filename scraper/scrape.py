@@ -1,6 +1,10 @@
 from playwright.sync_api import sync_playwright
 import pandas as pd
 import os
+import sys
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from database.db import init_db, save_jobs
 
 def scrape_duunitori(search_term, max_jobs=30):
     url = f"https://duunitori.fi/tyopaikat?haku={search_term.replace(' ', '+')}"
@@ -50,14 +54,20 @@ def scrape_duunitori(search_term, max_jobs=30):
 search_terms = ["python", "developer", "data analyst", "cybersecurity"]
 all_jobs = []
 
+init_db()
+
 for term in search_terms:
     print(f"Scraping: {term}...")
     results = scrape_duunitori(term, max_jobs=30)
     print(f"  Found {len(results)} jobs")
     all_jobs.extend(results)
 
+# Save to database
+save_jobs(all_jobs)
+
+# Also keep CSV for dashboard compatibility
 df = pd.DataFrame(all_jobs)
 df.drop_duplicates(subset=["title", "company"], inplace=True)
 os.makedirs("data", exist_ok=True)
 df.to_csv("data/jobs.csv", index=False)
-print(f"\nTotal unique jobs scraped: {len(df)}")
+print(f"Total unique jobs scraped: {len(df)}")
