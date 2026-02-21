@@ -1,123 +1,77 @@
-# Finnish Job Market Scraper & Analyzer
+# job-scraper 🔍
 
-A Python tool that scrapes live job listings from [Duunitori.fi](https://duunitori.fi), stores them in a SQLite database, and generates a single-page interactive HTML report with charts and stats.
+Scrapes live job listings from [Duunitori.fi](https://duunitori.fi) (Finland's largest job board), stores them in SQLite, and generates a self-contained interactive HTML report with charts.
 
-Built as a portfolio project demonstrating web scraping, data pipelines, database management, and data visualization.
+Works for any job title or profession — not just tech roles.
 
----
+## What it does
 
-## What It Does
+1. You enter a search term (e.g. "python", "nurse", "marketing manager")
+2. Playwright scrapes live listings from Duunitori — handles JavaScript-rendered pages
+3. Results are stored in SQLite with timestamps
+4. A Plotly dashboard is generated as a single HTML file you can share with anyone
 
-Enter any job title or field and the tool scrapes live listings from Finland's largest job board, stores the results in a SQLite database with timestamps, and generates a single-page interactive HTML report with all charts and stats.
+## Tech stack
 
-It works for any profession — teacher, nurse, marketing manager, software developer — not just tech roles.
+- **Playwright** — browser automation for JS-rendered pages
+- **BeautifulSoup4** — HTML parsing
+- **Pandas** — data cleaning and analysis
+- **SQLite** — persistent storage with timestamps
+- **Plotly** — interactive charts in the report
 
----
-
-## Features
-
-- Accepts any search term at runtime — works for any job or field
-- Scrapes live job listings (title, company, location) using browser automation
-- Handles JavaScript-rendered pages that basic scrapers cannot access
-- Stores all scraped data in a SQLite database with timestamps
-- Exports to CSV for quick access
-- Generates a single-page interactive HTML report with all charts
-- Report can be shared with anyone — no Python required to view it
-
----
-
-## Tech Stack
-
-| Tool | Purpose |
-|---|---|
-| Python 3.11 | Core language |
-| Playwright | Browser automation for JavaScript-rendered pages |
-| BeautifulSoup4 | HTML parsing |
-| Pandas | Data cleaning and analysis |
-| SQLite | Persistent database storage |
-| Plotly | Interactive data visualization |
-
----
-
-## Project Structure
-
-```
-job-scraper/
-├── scraper/
-│   └── scrape.py           # Playwright web scraper
-├── analysis/
-│   └── analyze.py          # Pandas data analysis
-├── dashboard/
-│   └── dashboard.py        # Single-page HTML dashboard
-├── database/
-│   └── db.py               # SQLite database handler
-├── data/
-│   └── jobs.db             # Auto-generated database
-├── requirements.txt
-└── README.md
-```
-
----
-
-## Getting Started
-
-### Prerequisites
-
-- Python 3.11+
-- pip
-
-### Installation
+## Setup
 
 ```bash
-# Clone the repository
 git clone https://github.com/GhaithKelil/job-scraper.git
 cd job-scraper
 
-# Create and activate a virtual environment
 python -m venv venv
 venv\Scripts\activate        # Windows
 source venv/bin/activate     # macOS/Linux
 
-# Install dependencies
 pip install -r requirements.txt
 playwright install chromium
 ```
 
-### Usage
+## Usage
 
 ```bash
-# Step 1 - Run the scraper (you will be prompted to enter a search term)
+# 1. Scrape (you'll be prompted for a search term)
 python scraper/scrape.py
 
-# Step 2 - Optional: print analysis summary in terminal
+# 2. Optional: print a summary in the terminal
 python analysis/analyze.py
 
-# Step 3 - Generate and open the dashboard
+# 3. Generate the dashboard (opens automatically in browser)
 python dashboard/dashboard.py
 ```
 
-The dashboard saves as an HTML file in the `data/` folder and opens automatically in your browser. It can be shared with anyone — no Python required to view it.
+The report is saved as an HTML file in `data/` and can be shared with anyone — no Python needed to view it.
 
----
+## Project structure
 
-## Sample Results
+```
+job-scraper/
+├── scraper/
+│   └── scrape.py       # Playwright scraper
+├── analysis/
+│   └── analyze.py      # Pandas analysis
+├── dashboard/
+│   └── dashboard.py    # HTML report generator
+├── database/
+│   └── db.py           # SQLite handler
+├── data/               # Generated files (gitignored)
+└── requirements.txt
+```
 
-Searching for "python" returns around 25-50 live listings. Key findings from the Finnish market:
+## Sample findings
 
-- Helsinki and Espoo account for the majority of tech listings
-- Engineer and Analyst are the most common role types
-- LähiTapiola, Fortum, and Tampereen yliopisto are among the most active hirers
+Searching for "python" in the Finnish market:
 
----
+- Helsinki and Espoo account for most listings
+- Engineer and Developer are the most common titles
+- LahiTapiola, Fortum, and Tampereen yliopisto among top hirers
 
-## Potential Extensions
+## License
 
-- Schedule daily scraping with Windows Task Scheduler or cron
-- Add trend tracking to compare market changes over time
-- Expand to additional job boards for broader coverage
-
----
-
-## Author
-
-Ghaith Kelil — [GitHub](https://github.com/GhaithKelil)
+MIT
